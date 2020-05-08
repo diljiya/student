@@ -69,7 +69,7 @@ class DefaultLayout extends Component {
                         )} />
                     ) : (null);
                   })}
-                  <Redirect from="/" to="/dashboard" />
+                  <Redirect from="/" to="/home" />
                 </Switch>
               </Suspense>
             </Container>
@@ -80,7 +80,7 @@ class DefaultLayout extends Component {
             </Suspense>
           </AppAside>
         </div>
-        <AppFooter>
+        <AppFooter style={{ flex: '0 0 28px' }}>
           <Suspense fallback={this.loading()}>
             <DefaultFooter />
           </Suspense>

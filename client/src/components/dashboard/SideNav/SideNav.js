@@ -46,7 +46,7 @@ class SideNav extends Component {
               menu
             </i>
           </li>
-          <NavLink exact activeClassName="active-page" to="/dashboard">
+          <NavLink exact activeClassName="active-page" to="/home">
             <li>
               <i className="material-icons icon">home</i>Home
             </li>

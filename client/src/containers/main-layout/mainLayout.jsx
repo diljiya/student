@@ -5,7 +5,7 @@ class MainLayout extends React.Component {
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/home");
     } else {
       this.props.history.push("/login");
     }
@@ -13,7 +13,7 @@ class MainLayout extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/home");
     } else {
       this.props.history.push('/login');
     }

@@ -46,7 +46,7 @@ export const deleteProject = (id, history) => dispatch => {
         payload: id
       })
     )
-    .then(res => history.push("/dashboard"))
+    .then(res => history.push("/home"))
     .catch(err => console.log(err));
 };
 

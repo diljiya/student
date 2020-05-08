@@ -62,7 +62,7 @@ class TopNav extends Component {
           >
             menu
           </i>
-          <Link to="/dashboard">
+          <Link to="/home">
             <h1 className="brand-header">
               Team<span className="brand-header-sub">s</span>
             </h1>
@@ -81,7 +81,7 @@ class TopNav extends Component {
             {this.state.dropdown ? (
               <ul className="dropdown">
                 <p>Hello, {name !== undefined && name.split(" ")[0]}</p>
-                <Link to="/dashboard">
+                <Link to="/home">
                   <li>Home</li>
                 </Link>
                 {/*
