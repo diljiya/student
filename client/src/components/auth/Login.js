@@ -2,7 +2,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import {
+  Button,
+  FormFeedback,
+  Card,
+  CardBody,
+  CardGroup,
+  Col,
+  Container,
+  Form,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row
+} from 'reactstrap';
 
 import { loginUser } from "../../actions/authActions";
 
@@ -141,19 +155,10 @@ class Login extends Component {
                           type="email"
                           placeholder="Username"
                           autoComplete="username"
+                          invalid={errors.email || errors.emailnotfound}
                         />
-                        {/* <input
-                          onChange={this.onChange}
-                          value={this.state.email}
-                          error={errors.email}
-                          id="email"
-                          type="email"
-                          className="auth-input"
-                        /> */}
-                        <div className="auth-error">
-                          {errors.email}
-                          {errors.emailnotfound}
-                        </div>
+                        <FormFeedback>{errors.email}</FormFeedback>
+                        <FormFeedback>{errors.emailnotfound}</FormFeedback>
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
@@ -169,19 +174,10 @@ class Login extends Component {
                           type="password"
                           placeholder="Password"
                           autoComplete="current-password"
+                          invalid={errors.password || errors.passwordincorrect}
                         />
-                        {/* <input
-                          onChange={this.onChange}
-                          value={this.state.password}
-                          error={errors.password}
-                          id="password"
-                          type="password"
-                          className="auth-input"
-                        /> */}
-                        <div className="auth-error">
-                          {errors.password}
-                          {errors.passwordincorrect}
-                        </div>
+                        <FormFeedback>{errors.password}</FormFeedback>
+                        <FormFeedback>{errors.passwordincorrect}</FormFeedback>
                       </InputGroup>
                       <Row>
                         <Col xs="6">
