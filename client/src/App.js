@@ -19,6 +19,7 @@ import Layout from "./components/dashboard/Layout";
 import NotFound from "./components/404/404";
 
 import DefaultLayout from './containers/DefaultLayout';
+import MainLayout from './containers/main-layout';
 
 // Style
 import "./App.scss";
@@ -53,7 +54,8 @@ class App extends Component {
         <Router>
           <div className="App">
             <Switch>
-              <Route exact path="/" component={Login} />
+              <Route exact path="/" component={MainLayout} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <PrivateRoute exact path="/dashboard" component={DefaultLayout} />
               <Route

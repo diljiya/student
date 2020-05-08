@@ -35,7 +35,6 @@ class DefaultLayout extends Component {
 
   render() {
     const { history } = this.props;
-    debugger
     return (
       <div className="app">
         <AppHeader fixed>
