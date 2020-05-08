@@ -11,6 +11,7 @@ import sygnet from '../../assets/img/brand/sygnet.svg'
 
 const propTypes = {
   children: PropTypes.node,
+  history: PropTypes.shape().isRequired
 };
 
 const defaultProps = {};
@@ -18,12 +19,8 @@ const defaultProps = {};
 
 class DefaultHeader extends Component {
   onLogoutClick = e => {
-    debugger
     e.preventDefault();
-    const test = this.props;
     logoutUser(this.props.history);
-    debugger
-    window.location.href = "/";
   };
   render() {
 

@@ -34,13 +34,13 @@ class DefaultLayout extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { history } = this.props;
     debugger
     return (
       <div className="app">
         <AppHeader fixed>
           <Suspense fallback={this.loading()}>
-            <DefaultHeader onLogout={e => this.signOut(e)} />
+            <DefaultHeader onLogout={e => this.signOut(e)} history={history} />
           </Suspense>
         </AppHeader>
         <div className="app-body">
