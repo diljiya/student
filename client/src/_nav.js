@@ -9,6 +9,15 @@ export default {
         text: 'NEW',
       },
     },
+    {
+      name: 'Home Works',
+      url: '/homeworks',
+      icon: 'icon-pencil',
+      badge: {
+        variant: 'info',
+        text: 'NEW',
+      },
+    },
     // {
     //   title: true,
     //   name: 'Theme',
