@@ -2,26 +2,42 @@ import axios from "axios";
 
 import {
   CREATE_HOMEWORK,
+  CREATE_HOMEWORK_LOADING,
   UPDATE_PROJECT,
   DELETE_PROJECT,
   GET_PROJECT,
   PROJECT_LOADING,
-  GET_PROJECTS,
+  GET_HOMEWORKS,
   PROJECTS_LOADING
 } from "./types";
 
 // Create Project
-export const createHomeWork = (dispatch, homeWorkData) => {
-  debugger
+export const createHomeWork = async (dispatch, homeWorkData, history) => {
+  dispatch({
+    type: CREATE_HOMEWORK_LOADING,
+    loading: true
+  })
   axios
     .post("/api/homeworks/create", homeWorkData)
-    .then(res =>
+    .then(res => {
       dispatch({
         type: CREATE_HOMEWORK,
         payload: res.datas
       })
+      dispatch({
+        type: CREATE_HOMEWORK_LOADING,
+        loading: false
+      });
+      history.push('/homeworks')
+    }
     )
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: CREATE_HOMEWORK_LOADING,
+        loading: false
+      })
+    });
 };
 
 // Update Project
@@ -71,19 +87,19 @@ export const getProject = id => dispatch => {
 };
 
 // Get all projects for specific user
-export const getProjects = () => dispatch => {
+export const fetchHomeWorks = dispatch => {
   dispatch(setProjectsLoading());
   axios
-    .get("/api/projects")
+    .get("/api/homeworks")
     .then(res =>
       dispatch({
-        type: GET_PROJECTS,
+        type: GET_HOMEWORKS,
         payload: res.data
       })
     )
     .catch(err =>
       dispatch({
-        type: GET_PROJECTS,
+        type: GET_HOMEWORKS,
         payload: null
       })
     );

@@ -6,6 +6,7 @@ const path = require("path");
 
 const users = require("./routes/api/users");
 const projects = require("./routes/api/projects");
+const homeworks = require("./routes/api/homeworks")
 const tasks = require("./routes/api/tasks");
 
 const app = express();
@@ -39,6 +40,7 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use("/api/projects", projects);
+app.use("/api/homeworks", homeworks);
 app.use("/api/tasks", tasks);
 
 // Serve static assets (build folder) if in production

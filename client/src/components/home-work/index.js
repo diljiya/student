@@ -5,12 +5,13 @@ import { createHomeWork } from '../../actions/homeWorkActions';
 
 const mapStateToProps = (state) => {
   return ({
-    user: state.auth.user
+    user: state.auth.user,
+    loading: state.homeworks.homeworkLoading
   });
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  createHomeWork: (data) => createHomeWork(dispatch, data)
+  createHomeWork: (data, history) => createHomeWork(dispatch, data, history)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeWork);

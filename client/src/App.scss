@@ -25,3 +25,38 @@ a {
 @import '~simple-line-icons/css/simple-line-icons.css';
 // Import Main styles for this application
 @import './scss/style.scss';
+
+.primary-btn {
+  color: #ffffff;
+  background-color: #1d97c2;
+  border: none;
+  font-weight: 500;
+  width: fit-content;
+  font-size: 14px;
+  height: 35px;
+  border-radius: 5px;
+  padding: 3px 15px;
+  letter-spacing: 0.4px;
+  &:active {
+    background-color: #3d90c7;
+  }
+  &:hover {
+    background-color: #1e74af;
+    color: #ffffff;
+  }
+  &:disabled {
+    background-color: #8ab5d2;
+    color: #fafafa;
+    font-weight: 100;
+  }
+}
+
+.loaderDiv {
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
