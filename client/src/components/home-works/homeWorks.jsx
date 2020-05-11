@@ -59,7 +59,7 @@ class HomeWorks extends React.Component {
 
 
   render() {
-    const { homeworks } = this.props;
+    const { homeworks, deleteHomeWork } = this.props;
     const { deleteModal } = this.state;
     return (
       <div id="home-works-root">
@@ -71,7 +71,7 @@ class HomeWorks extends React.Component {
           {deleteModal.open && (<ConfirmModal
             show={deleteModal.open}
             toggler={this.confirmModalToggler}
-            handleConfirm={() => { }}
+            handleConfirm={() => deleteHomeWork(deleteModal.data._id)}
             confirmMessage="Are you sure you want to delete this Work..?"
             headerLabel={`${deleteModal.data ? deleteModal.data.title : ''}`}
           />)}

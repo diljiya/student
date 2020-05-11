@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import HomeWorks from './homeWorks';
-import { fetchHomeWorks } from '../../actions/homeWorkActions';
+import { fetchHomeWorks, deleteHomeWork } from '../../actions/homeWorkActions';
 
 const mapStateToProps = (state) => {
   return ({
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchHomeWorks: () => fetchHomeWorks(dispatch)
+  fetchHomeWorks: () => fetchHomeWorks(dispatch),
+  deleteHomeWork: (id) => deleteHomeWork(dispatch, id)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeWorks);

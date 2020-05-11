@@ -3,13 +3,12 @@ import axios from "axios";
 import {
   CREATE_HOMEWORK,
   CREATE_HOMEWORK_LOADING,
-  UPDATE_PROJECT,
-  DELETE_PROJECT,
   GET_PROJECT,
   PROJECT_LOADING,
   GET_HOMEWORKS,
   PROJECTS_LOADING,
-  UPDATE_HOMEWORK
+  UPDATE_HOMEWORK,
+  DELETE_HOMEWORK
 } from "./types";
 
 // Create Project
@@ -71,16 +70,16 @@ export const updateHomeWork = (dispatch, homeWorkData, history) => {
 };
 
 // Delete Project
-export const deleteProject = (id, history) => dispatch => {
+export const deleteHomeWork = (dispatch, id) => {
   axios
-    .delete(`/api/projects/delete/${id}`)
+    .delete(`/api/homeworks/delete/${id}`)
     .then(res =>
       dispatch({
-        type: DELETE_PROJECT,
+        type: DELETE_HOMEWORK,
         payload: id
       })
     )
-    .then(res => history.push("/home"))
+    .then(res => { })
     .catch(err => console.log(err));
 };
 
