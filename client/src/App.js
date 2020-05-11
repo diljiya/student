@@ -15,7 +15,6 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Layout from "./components/dashboard/Layout";
 import NotFound from "./components/404/404";
 
 import DefaultLayout from './containers/DefaultLayout';
@@ -59,7 +58,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <PrivateRoute exact path="/home" component={DefaultLayout} />
               <Route
-                component={localStorage.jwtTokenTeams ? DefaultLayout : NotFound}
+                component={localStorage.jwtTokenTeams ? DefaultLayout : DefaultLayout}
               />
             </Switch>
           </div>
