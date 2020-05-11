@@ -1,8 +1,18 @@
 import React from 'react';
 import { formatDate } from '../../formatter';
+import ConfirmModal from '../confirmmodal';
 import './styles.scss';
 
 class HomeWorks extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      deleteModal: {
+        open: false,
+        data: null
+      }
+    }
+  }
 
   componentDidMount = () => {
     const { fetchHomeWorks } = this.props;
@@ -19,8 +29,38 @@ class HomeWorks extends React.Component {
     history.push(`/homeworks/${homeWork._id}`, homeWork)
   }
 
+  handleUpdateClick = (e, homeWork) => {
+    const { history } = this.props;
+    e.preventDefault();
+    e.stopPropagation();
+    history.push(`/homeworks/${homeWork._id}`, homeWork)
+  }
+
+  handleDeleteClick = (e, homeWork) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({
+      deleteModal: {
+        open: true,
+        data: homeWork
+      }
+    })
+  }
+
+
+  confirmModalToggler = () => {
+    this.setState({
+      deleteModal: {
+        open: false,
+        data: null
+      }
+    });
+  }
+
+
   render() {
     const { homeworks } = this.props;
+    const { deleteModal } = this.state;
     return (
       <div id="home-works-root">
         <button className="primary-btn" id="home-work-add-btn" onClick={this.handleNewClick}>
@@ -28,6 +68,14 @@ class HomeWorks extends React.Component {
           New
         </button>
         <div id="home-works">
+          {deleteModal.open && (<ConfirmModal
+            show={deleteModal.open}
+            toggler={this.confirmModalToggler}
+            handleConfirm={() => { }}
+            confirmMessage="Are you sure you want to delete this Work..?"
+            headerLabel={`${deleteModal.data ? deleteModal.data.title : ''}`}
+          />)}
+
           {homeworks.map((item) => (
             <div className="card-primary" onClick={() => this.handleClick(item)}>
               <div id="home-work-date">
@@ -52,6 +100,7 @@ class HomeWorks extends React.Component {
                   id="home-work-toolbar-buttons"
                   class="fa fa-pencil-square-o"
                   aria-hidden="true"
+                  onClick={(e) => this.handleUpdateClick(e, item)}
                 />
                 <i
                   id="home-work-toolbar-buttons"
@@ -60,6 +109,7 @@ class HomeWorks extends React.Component {
                   style={{
                     color: 'red'
                   }}
+                  onClick={(e) => this.handleDeleteClick(e, item)}
                 />
               </div>
             </div>
