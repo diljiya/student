@@ -8,7 +8,8 @@ import {
   GET_HOMEWORKS,
   PROJECTS_LOADING,
   UPDATE_HOMEWORK,
-  DELETE_HOMEWORK
+  DELETE_HOMEWORK,
+  HOMEWORKS_LOADING
 } from "./types";
 
 // Create Project
@@ -79,7 +80,9 @@ export const deleteHomeWork = (dispatch, id) => {
         payload: id
       })
     )
-    .then(res => { })
+    .then(res => {
+      fetchHomeWorks(dispatch);
+    })
     .catch(err => console.log(err));
 };
 
@@ -104,20 +107,33 @@ export const getProject = id => dispatch => {
 
 // Get all projects for specific user
 export const fetchHomeWorks = dispatch => {
-  dispatch(setProjectsLoading());
+  dispatch({
+    type: HOMEWORKS_LOADING,
+    loading: true
+  })
   axios
     .get("/api/homeworks")
-    .then(res =>
+    .then(res => {
+      dispatch({
+        type: HOMEWORKS_LOADING,
+        loading: true
+      })
       dispatch({
         type: GET_HOMEWORKS,
         payload: res.data
       })
+    }
     )
-    .catch(err =>
+    .catch(err => {
+      dispatch({
+        type: HOMEWORKS_LOADING,
+        loading: false
+      })
       dispatch({
         type: GET_HOMEWORKS,
         payload: null
       })
+    }
     );
 };
 

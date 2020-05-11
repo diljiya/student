@@ -1,6 +1,7 @@
 import React from 'react';
 import { formatDate } from '../../formatter';
 import ConfirmModal from '../confirmmodal';
+import SpinLoader from '../spinloader';
 import './styles.scss';
 
 class HomeWorks extends React.Component {
@@ -59,10 +60,13 @@ class HomeWorks extends React.Component {
 
 
   render() {
-    const { homeworks, deleteHomeWork } = this.props;
+    const { homeworks, deleteHomeWork, loading } = this.props;
     const { deleteModal } = this.state;
     return (
       <div id="home-works-root">
+        {loading && (<div className="loaderDiv">
+          <SpinLoader isLoading={loading} />
+        </div>)}
         <button className="primary-btn" id="home-work-add-btn" onClick={this.handleNewClick}>
           <i class="fa fa-file-text" aria-hidden="true" style={{ marginRight: 5 }}></i>
           New

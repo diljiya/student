@@ -5,6 +5,7 @@ import {
   GET_PROJECT,
   PROJECT_LOADING,
   GET_HOMEWORKS,
+  HOMEWORKS_LOADING,
   PROJECTS_LOADING,
   CREATE_HOMEWORK_LOADING
 } from "../actions/types";
@@ -30,6 +31,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         homeworkLoading: action.loading
+      }
+    case HOMEWORKS_LOADING:
+      return {
+        ...state,
+        loading: action.loading
       }
     case UPDATE_PROJECT:
       let index = state.projects.findIndex(
