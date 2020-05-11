@@ -24,6 +24,7 @@ const Buttons = React.lazy(() => import('./views/Buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/Charts'));
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
 const HomeWorks = React.lazy(() => import('./components/home-works'));
+const UnderConstruction = React.lazy(() => import('./components/under-construction/underConstruction'));
 const HomeWork = React.lazy(() => import('./components/home-work'));
 const CoreUIIcons = React.lazy(() => import('./views/Icons/CoreUIIcons'));
 const Flags = React.lazy(() => import('./views/Icons/Flags'));
@@ -42,6 +43,8 @@ const User = React.lazy(() => import('./views/Users/User'));
 const routes = [
   { path: '/', exact: true, name: 'Student' },
   { path: '/home', name: 'Home', component: Dashboard },
+  { path: '/feedbacks', name: 'Home', component: UnderConstruction },
+  { path: '/profile', name: 'Home', component: UnderConstruction },
   { path: '/homeworks', exact: true, name: 'Home Works', component: HomeWorks },
   { path: '/homeworks/:id', exact: true, name: 'Home Work', component: HomeWork },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },

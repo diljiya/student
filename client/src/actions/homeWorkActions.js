@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import showNotification from '../notifier';
+
 import {
   CREATE_HOMEWORK,
   CREATE_HOMEWORK_LOADING,
@@ -30,6 +32,11 @@ export const createHomeWork = async (dispatch, homeWorkData, history) => {
         loading: false
       });
       history.push('/homeworks')
+      showNotification(
+        'New Record Created',
+        'success',
+        'HomeWork'
+      );
     }
     )
     .catch(err => {
@@ -59,6 +66,11 @@ export const updateHomeWork = (dispatch, homeWorkData, history) => {
         loading: false
       });
       history.push('/homeworks')
+      showNotification(
+        'Record Updated',
+        'success',
+        'HomeWork'
+      );
     }
     )
     .catch(err => {
@@ -82,6 +94,11 @@ export const deleteHomeWork = (dispatch, id) => {
     )
     .then(res => {
       fetchHomeWorks(dispatch);
+      showNotification(
+        'Record Deleted',
+        'success',
+        'HomeWork'
+      );
     })
     .catch(err => console.log(err));
 };

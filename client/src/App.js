@@ -16,6 +16,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import NotFound from "./components/404/404";
+import Notifier from './components/notifier';
 
 import DefaultLayout from './containers/DefaultLayout';
 import MainLayout from './containers/main-layout';
@@ -52,6 +53,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
+            <Notifier />
             <Switch>
               <Route exact path="/" component={MainLayout} />
               <Route exact path="/login" component={Login} />

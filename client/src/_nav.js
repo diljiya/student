@@ -5,8 +5,8 @@ export default {
       url: '/home',
       icon: 'icon-home',
       badge: {
-        variant: 'info',
-        text: 'NEW',
+        variant: 'warning',
+        text: 'Alpha',
       },
     },
     {
@@ -16,6 +16,24 @@ export default {
       badge: {
         variant: 'info',
         text: 'NEW',
+      },
+    },
+    {
+      name: 'Feedbacks',
+      url: '/feedbacks',
+      icon: 'icon-feed',
+      badge: {
+        variant: 'danger',
+        text: 'Pre-alpha',
+      },
+    },
+    {
+      name: 'Profile',
+      url: '/profile',
+      icon: 'icon-people',
+      badge: {
+        variant: 'danger',
+        text: 'Pre-alpha',
       },
     },
     // {

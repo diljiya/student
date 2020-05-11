@@ -64,8 +64,7 @@ class DefaultHeader extends Component {
               <Avatar
                 name={this.props.user.name}
                 options={{
-                  size: 30,
-                  twoLetter: true,
+                  size: 25,
                   bgColor: '',
                   href: '',
                   target: '_blank',
@@ -76,7 +75,7 @@ class DefaultHeader extends Component {
                   imgHeight: 100
                 }}
               />
-              <span style={{ marginLeft: 5, fontSize: 16 }}>{this.props.user.name}</span>
+              <span style={{ marginLeft: 10, fontSize: 15 }}>{this.props.user.name}</span>
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>
