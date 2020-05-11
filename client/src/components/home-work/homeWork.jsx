@@ -34,7 +34,8 @@ class HomeWork extends Component {
       title: homeWork ? homeWork.title : `Title - ${props.match.params.id}`,
       subject: homeWork ? homeWork.subject : subjects[0],
       description: homeWork ? homeWork.description : 'Sample Description',
-      editorState: this.setEditorState(homeWork)
+      editorState: this.setEditorState(homeWork),
+      action: homeWork ? 'Update' : 'Add'
     }
   }
 
@@ -56,8 +57,8 @@ class HomeWork extends Component {
   };
 
   handleHomeWorkSave = () => {
-    const { createHomeWork, user, history } = this.props;
-    const { editorState, title, subject, description } = this.state;
+    const { createHomeWork, user, history, updateHomeWork } = this.props;
+    const { editorState, title, subject, description, action } = this.state;
     const contentState = editorState.getCurrentContent();
     const data = {
       data: JSON.stringify(convertToRaw(contentState)),
@@ -67,6 +68,11 @@ class HomeWork extends Component {
       userId: user.id,
       userName: user.name
     };
+
+    if (action === 'Update') {
+      data.id = this.props.match.params.id
+      return updateHomeWork(data, history)
+    }
     createHomeWork(data, history);
   }
 
@@ -137,8 +143,8 @@ class HomeWork extends Component {
           onClick={this.handleHomeWorkSave}
           style={{ float: 'right', marginRight: 10, marginBottom: 50 }}
         >
-          Save
-           </button>
+          {this.state.action === 'Update' ? 'Update' : 'Save'}
+        </button>
       </div>
     );
   }

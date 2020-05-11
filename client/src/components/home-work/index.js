@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import HomeWork from './homeWork';
-import { createHomeWork } from '../../actions/homeWorkActions';
+import { createHomeWork, updateHomeWork } from '../../actions/homeWorkActions';
 
 const mapStateToProps = (state) => {
   return ({
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  createHomeWork: (data, history) => createHomeWork(dispatch, data, history)
+  createHomeWork: (data, history) => createHomeWork(dispatch, data, history),
+  updateHomeWork: (data, history) => updateHomeWork(dispatch, data, history)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeWork);

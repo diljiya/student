@@ -22,7 +22,6 @@ router.get(
           console.log(req.user._id)
           return work.owner.id == req.user._id
         });
-        console.log(homeWorks);
         res.json(homeWorks);
       })
       .catch(err => console.log(err));
@@ -49,7 +48,6 @@ router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    console.log(req);
     const OWNER = {
       id: req.user.id,
       name: req.user.name,
@@ -75,20 +73,14 @@ router.patch(
   "/update",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    let projectFields = {};
-
-    projectFields.name = req.body.projectName;
-    projectFields.teamMembers = req.body.members;
-
-    Project.findOneAndUpdate(
-      { _id: req.body.id },
-      { $set: projectFields },
-      { new: true }
-    )
-      .then(project => {
-        res.json(project);
-      })
-      .catch(err => console.log(err));
+    HomeWork.findOne({ _id: req.body.id }, function (err, doc) {
+      console.log(doc)
+      doc.title = req.body.title,
+        doc.description = req.body.description,
+        doc.subject = req.body.subject,
+        doc.data = req.body.data
+      doc.save().then(homework => res.json(homework))
+    });
   }
 );
 

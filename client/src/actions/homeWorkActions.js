@@ -8,7 +8,8 @@ import {
   GET_PROJECT,
   PROJECT_LOADING,
   GET_HOMEWORKS,
-  PROJECTS_LOADING
+  PROJECTS_LOADING,
+  UPDATE_HOMEWORK
 } from "./types";
 
 // Create Project
@@ -41,16 +42,32 @@ export const createHomeWork = async (dispatch, homeWorkData, history) => {
 };
 
 // Update Project
-export const updateProject = projectData => dispatch => {
+export const updateHomeWork = (dispatch, homeWorkData, history) => {
+  dispatch({
+    type: CREATE_HOMEWORK_LOADING,
+    loading: true
+  })
   axios
-    .patch("/api/projects/update", projectData)
-    .then(res =>
+    .patch("/api/homeworks/update", homeWorkData)
+    .then(res => {
       dispatch({
-        type: UPDATE_PROJECT,
+        type: UPDATE_HOMEWORK,
         payload: res.data
       })
+      dispatch({
+        type: CREATE_HOMEWORK_LOADING,
+        loading: false
+      });
+      history.push('/homeworks')
+    }
     )
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: CREATE_HOMEWORK_LOADING,
+        loading: false
+      })
+    });
 };
 
 // Delete Project
